@@ -1,7 +1,7 @@
 import { SERVICE_NAME } from '@users/constants';
+import { createConnection } from '@users/queues/connections';
 import { logger } from '@users/utils/logger.util';
 import { Channel } from 'amqplib';
-import { createConnection } from '../connections';
 
 const log = logger('usersUserProducer', 'debug');
 

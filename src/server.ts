@@ -5,7 +5,6 @@ import { config } from '@users/config';
 import { SERVICE_NAME } from '@users/constants';
 import { elasticSearch } from '@users/elasticsearch';
 import { createConnection } from '@users/queues/connections';
-import { userConsumer } from '@users/queues/consumers/user.consumer';
 import { appRoutes } from '@users/routes';
 import { logger } from '@users/utils/logger.util';
 import { Channel } from 'amqplib';
@@ -80,8 +79,6 @@ export class UsersServer {
     if (!usersChannel) {
       log.log('error', SERVICE_NAME + ` start queue failed, channel undefined`);
     }
-    await userConsumer.consumeBuyerDirectMessage(usersChannel);
-    await userConsumer.consumeSellerDirectMessage(usersChannel);
   }
 
   private errorHandler(): void {
